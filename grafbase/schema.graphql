@@ -1,5 +1,6 @@
 type Thread @model @search {
   text : String!,
+  media: URL,
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
   authorId: ID!,
@@ -13,7 +14,7 @@ type User @model {
   userId: String!,
   name: String @length(min: 3),
   username: String @length(min: 3),
-  image: String,
+  image: URL,
   email: Email,
   bio: String,
   onboarded: Boolean @default(value: false),
@@ -25,7 +26,7 @@ type Community @model {
   communityId: String!,
   username: String @length(min: 3),
   name: String @length(min: 3),
-  image: String,
+  image: URL,
   bio: String,
   members: [User] @relation(name: "CommunityMembers"),
   createdBy: User

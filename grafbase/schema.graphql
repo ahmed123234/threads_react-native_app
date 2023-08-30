@@ -1,44 +1,35 @@
-# Welcome to Grafbase!
-# Define your data models, integrate auth, permission rules, custom resolvers, search, and more with Grafbase.
-
-# Integrate Auth
-# https://grafbase.com/docs/auth
-#
-# schema @auth(providers: [{ type: oidc, issuer: "{{ env.ISSUER_URL }}" }], rules: [{ allow: private }]) {
-#   query: Query
-# }
-
-# Define Data Models
-# https://grafbase.com/docs/database
-type Post @model @search {
-  title: String!
-  slug: String! @unique
-  content: String
-  publishedAt: DateTime
-  comments: [Comment]
-  likes: Int @default(value: 0)
-  tags: [String] @length(max: 5)
-  author: User
+type Thread @model @search {
+  text : String!,
+  publishedAtAt: DateTime!,
+  likes: Int @default(value: 0),
+  tags: [String] @length(max: 5),
+  author: User,
+  community: Community, 
+  parentId: String,
+  children: [Thread]
 }
 
-type Comment @model @search {
-  post: Post!
-  body: String!
-  likes: Int @default(value: 0)
-  author: User
+type Community @model {
+  id: ID!,
+  username: String @length(min: 3)!,
+  name: String @length(min: 3)!,
+  image: Url,
+  bio: String,
+  members: [User],
+  createdBy: User,
+  thraeds: [Thread]
 }
 
 type User @model {
-  name: String!
-  email: Email
-  posts: [Post]
-  comments: [Comment]
-
-  # Extend models with resolvers
-  # https://grafbase.com/docs/edge-gateway/resolvers
-  # gravatar: URL @resolver(name: "user/gravatar")
+  id: ID!,
+  name: String @length(min: 3)!,
+  username: String @length(min: 3)!,
+  image: String,
+  email: Email,
+  bio: String,
+  onboarded: Boolean @default(value: false),
+  threads: [Thread],
+  communities: [Community],
+  follows: [User],
+  mentions: [User],
 }
-
-# Start your backend
-# https://grafbase.com/docs/cli
-# npx grafbase dev

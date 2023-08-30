@@ -3,8 +3,8 @@ type Thread @model @search {
   media: URL,
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
-  authorId: ID!,
-  author: User,
+  authorId: ID! @unique,
+  author: User!,
   parentId: String,
   children: [Thread],
   community: Community

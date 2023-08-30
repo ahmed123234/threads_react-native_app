@@ -18,3 +18,14 @@ type User @model {
   onboarded: Boolean @default(value: false),
   threads: [Thread] ,
 }
+
+type Community @model {
+  communityId: String!,
+  username: String @length(min: 3),
+  name: String @length(min: 3),
+  image: String,
+  bio: String,
+  members: [User], 
+  createdBy: User,
+  threads: [Thread]
+}

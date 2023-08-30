@@ -10,9 +10,9 @@ type Thread @model @search {
 }
 
 type Community @model = {
-  id: string,
-  username: string @length(min: 3),
-  name: string @length(min: 3),
+  id: String,
+  username: String @length(min: 3),
+  name: String @length(min: 3),
   image: Url!,
   bio: String!,
   members: [User]!,

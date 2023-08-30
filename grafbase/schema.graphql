@@ -1,0 +1,35 @@
+type Thread @model @search {
+  text : String!,
+  createdAt: DateTime,
+  likes: Int @default(value: 0),
+  tags: [String] @length(max: 5),
+  author: User,
+  community: Community, 
+  parentId: String,
+  children: [Thread]
+}
+
+type Community @model = {
+  id: string,
+  username: string @length(min: 3),
+  name: string @length(min: 3),
+  image: Url!,
+  bio: String!,
+  members: [User]!,
+  createdBy: User,
+  thraeds: [Thread]!
+}
+
+const User = {
+  id: String,
+  name: String @length(min: 3),
+  username: String @length(min: 3),
+  image: Url!,
+  email: Email!,
+  bio: String!,
+  onboarded: Boolean @default(value: false),
+  threads: [Thread]!,
+  communities: [Community]!,
+  follows: [User]!,
+  mentions: [User]!,
+}

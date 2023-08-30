@@ -11,8 +11,8 @@ type Thread @model @search {
 
 type Community @model {
   id: ID!,
-  username: String @length(min: 3)!,
-  name: String @length(min: 3)!,
+  username: String @length(min: 3),
+  name: String @length(min: 3),
   image: Url,
   bio: String,
   members: [User],
@@ -22,8 +22,8 @@ type Community @model {
 
 type User @model {
   id: ID!,
-  name: String @length(min: 3)!,
-  username: String @length(min: 3)!,
+  name: String @length(min: 3),
+  username: String @length(min: 3),
   image: String,
   email: Email,
   bio: String,

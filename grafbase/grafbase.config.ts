@@ -1,7 +1,4 @@
 import { g, auth, config } from '@grafbase/sdk'
-import { Authorizer } from '@grafbase/sdk/dist/src/auth/authorizer'
-import { use } from 'react'
-
 // Welcome to Grafbase!
 // Define your data models, integrate auth, permission rules, custom resolvers, search, and more with Grafbase.
 // Integrate Auth

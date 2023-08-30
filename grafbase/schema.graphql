@@ -1,6 +1,5 @@
 type Thread @model @search {
   text : String!,
-  publishedAtAt: DateTime!,
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
   author: User,

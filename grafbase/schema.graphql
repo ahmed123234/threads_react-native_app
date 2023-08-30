@@ -4,20 +4,8 @@ type Thread @model @search {
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
   author: User,
-  community: Community, 
   parentId: String,
   children: [Thread] 
-}
-
-type Community @model {
-  community_id: String!,
-  username: String @length(min: 3),
-  name: String @length(min: 3),
-  image: String,
-  bio: String,
-  members: [User],
-  createdBy: User,
-  thraeds: [Thread]
 }
 
 type User @model {
@@ -29,7 +17,4 @@ type User @model {
   bio: String,
   onboarded: Boolean @default(value: false),
   threads: [Thread] ,
-  communities: [Community] ,
-  #follows: [User]  @relation,
-  #mentions: [User]  @relation,
 }

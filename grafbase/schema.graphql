@@ -5,7 +5,8 @@ type Thread @model @search {
   tags: [String] @length(max: 5),
   author: User,
   parentId: String,
-  children: [Thread] 
+  children: [Thread],
+  community: Community 
 }
 
 type User @model {
@@ -17,6 +18,7 @@ type User @model {
   bio: String,
   onboarded: Boolean @default(value: false),
   threads: [Thread] ,
+  community: [Community]
 }
 
 type Community @model {
@@ -25,7 +27,7 @@ type Community @model {
   name: String @length(min: 3),
   image: String,
   bio: String,
-  members: [User], 
-  createdBy: User,
-  threads: [Thread]
+  members: [User] 
+  createdBy: User
+  threads: [Thread] 
 }

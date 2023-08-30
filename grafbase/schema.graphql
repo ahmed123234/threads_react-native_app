@@ -4,7 +4,7 @@ type Thread @model @search {
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
   authorId: ID! @unique,
-  author: User!,
+  author: User,
   parentId: String,
   children: [Thread],
   community: Community

@@ -9,7 +9,7 @@ type Thread @model @search {
   children: [Thread]
 }
 
-type Community @model = {
+type Community @model {
   id: String,
   username: String @length(min: 3),
   name: String @length(min: 3),
@@ -20,7 +20,7 @@ type Community @model = {
   thraeds: [Thread]!
 }
 
-type User = {
+type User {
   id: String,
   name: String @length(min: 3),
   username: String @length(min: 3),

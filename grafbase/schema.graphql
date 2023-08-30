@@ -1,6 +1,6 @@
 type Thread @model @search {
   text : String!,
-  createdAt: DateTime,
+  createdAt: DateTime!,
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
   author: User,
@@ -10,7 +10,7 @@ type Thread @model @search {
 }
 
 type Community @model {
-  id: String,
+  id: ID!,
   username: String @length(min: 3),
   name: String @length(min: 3),
   image: Url!,
@@ -20,11 +20,11 @@ type Community @model {
   thraeds: [Thread]!
 }
 
-type User {
-  id: String,
+type User @model {
+  id: ID!,
   name: String @length(min: 3),
   username: String @length(min: 3),
-  image: Url!,
+  image: String!,
   email: Email!,
   bio: String!,
   onboarded: Boolean @default(value: false),

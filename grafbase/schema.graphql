@@ -10,18 +10,18 @@ type Thread @model @search {
 }
 
 type Community @model {
-  id: ID!,
+  community_id: String!,
   username: String @length(min: 3),
   name: String @length(min: 3),
   image: Url,
   bio: String,
-  members: [User]  @relation,
+  members: [User],
   createdBy: User,
-  thraeds: [Thread]  @relation
+  thraeds: [Thread]
 }
 
 type User @model {
-  id: ID!,
+  user_id: String!,
   name: String @length(min: 3),
   username: String @length(min: 3),
   image: String,

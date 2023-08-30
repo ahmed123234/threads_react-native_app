@@ -12,7 +12,7 @@ type Thread @model @search {
 type User @model {
   userId: String!,
   name: String @length(min: 3),
-  username: String! @length(min: 3),
+  username: String @length(min: 3),
   image: String,
   email: Email,
   bio: String,

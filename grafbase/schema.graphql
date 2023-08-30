@@ -2,11 +2,11 @@ type Thread @model @search {
   text : String!,
   likes: Int @default(value: 0),
   tags: [String] @length(max: 5),
-  authorId: ID! @unique,
+  authorId: ID,
   author: User @relation(fields: [authorId], references:[id]),
   parentId: String,
   children: [Thread],
-  communityId: ID! @unique,
+  communityId: ID,
   community: Community  @relation(fields: [communityId], references:[id])
 }
 
